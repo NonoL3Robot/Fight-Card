@@ -10,6 +10,6 @@ class MainTest {
 
     @Test
     void contextLoad() {
-
+        fail();
     }
 }
