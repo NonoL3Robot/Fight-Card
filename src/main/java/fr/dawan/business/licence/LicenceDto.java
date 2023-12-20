@@ -16,4 +16,5 @@ public class LicenceDto {
     private String name;
     private List<LicenceCarteDto> cartes;
     private long carteCount;
+
 }
