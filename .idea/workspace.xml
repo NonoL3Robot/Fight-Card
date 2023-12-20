@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1e97dc1-1fd1-4163-99bb-0ffe7492b609" name="Changes" comment="test Jenkins">
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/dawan/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c1e97dc1-1fd1-4163-99bb-0ffe7492b609" name="Changes" comment="Fix : MainTest (Fail)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,12 +139,30 @@
       <option name="project" value="LOCAL" />
       <updated>1703071934379</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add test">
+      <option name="closed" value="true" />
+      <created>1703077181862</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703077181863</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fix : MainTest (Fail)">
+      <option name="closed" value="true" />
+      <created>1703078774343</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703078774343</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="test Jenkins" />
-    <option name="LAST_COMMIT_MESSAGE" value="test Jenkins" />
+    <MESSAGE value="add test" />
+    <MESSAGE value="Fix : MainTest (Fail)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix : MainTest (Fail)" />
   </component>
 </project>
