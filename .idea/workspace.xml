@@ -4,39 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1e97dc1-1fd1-4163-99bb-0ffe7492b609" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/carte/Carte.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/carte/CarteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/carte/CarteDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/carte/CarteLicenceDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/carte/CarteMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/carte/CarteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/carte/CarteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/carte/CarteServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/generic/BaseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/generic/BaseEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/generic/GenericController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/generic/GenericMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/generic/GenericService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/generic/GenericServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/licence/Licence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/licence/LicenceCarteDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/licence/LicenceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/licence/LicenceDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/licence/LicenceMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/licence/LicenceRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/licence/LicenceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/business/licence/LicenceServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="c1e97dc1-1fd1-4163-99bb-0ffe7492b609" name="Changes" comment="test Jenkins">
+      <change afterPath="$PROJECT_DIR$/src/test/java/fr/dawan/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +18,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -68,29 +39,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.MyAwesomeProject [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.MyAwesomeProject [compile].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/noway/Projects/POEI&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "JUnit.MainTest.contextLoad.executor": "Run",
+    "Maven.MyAwesomeProject [clean].executor": "Run",
+    "Maven.MyAwesomeProject [compile].executor": "Run",
+    "Maven.MyAwesomeProject [package].executor": "Run",
+    "Maven.MyAwesomeProject [test].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/noway/Projects/POEI",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\noway\Projects\POEI\MyAwesomeProject\src\main\java\fr\dawan\business\user" />
       <recent name="C:\Users\noway\Projects\POEI\MyAwesomeProject\src\main\java\fr\dawan\business\carte" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="fr.dawan" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="fr.dawan.business.licence" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.MainTest.contextLoad">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fr.dawan.Main" />
       <module name="MyAwesomeProject" />
@@ -104,8 +86,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainTest.contextLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyAwesomeProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.dawan.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.dawan" />
+      <option name="MAIN_CLASS_NAME" value="fr.dawan.MainTest" />
+      <option name="METHOD_NAME" value="contextLoad" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MainTest.contextLoad" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -127,6 +126,28 @@
       <option name="presentableId" value="Default" />
       <updated>1702973081610</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1703071634561</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703071634561</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test Jenkins">
+      <option name="closed" value="true" />
+      <created>1703071934379</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703071934379</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="test Jenkins" />
+    <option name="LAST_COMMIT_MESSAGE" value="test Jenkins" />
   </component>
 </project>
