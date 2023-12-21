@@ -21,7 +21,7 @@ public class CarteController extends GenericController<CarteDto, CarteService> {
     }
 
     @GetMapping("byLicence/{name}")
-    public Page<CarteDto> findByLicenceNameLike(String name, Pageable pageable) {
+    public Page<CarteDto> findByLicenceNameLike(@PathVariable String name, Pageable pageable) {
         return service.findByLicence_NameLike(name, pageable);
     }
 }
