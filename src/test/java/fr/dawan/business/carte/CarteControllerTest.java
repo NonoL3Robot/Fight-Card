@@ -35,7 +35,7 @@ class CarteControllerTest {
 
         Carte carte1 = new Carte("Un article", null);
         Carte carte2 = new Carte("Un Article Deux", null);
-        Page<Carte> entities = new PageImpl<>(List.of(carte1, carte2));
+        Page<Carte> entities = new PageImpl<>(List.of(carte1, carte2), pageable, 2);
 
         Mockito.when(repository.findByNameLike("%" + name + "%", pageable)).thenReturn(entities);
 
@@ -48,6 +48,6 @@ class CarteControllerTest {
                 status().isOk()
             ).andExpect(
                 jsonPath("$").isNotEmpty()
-            );
+            ).andExpect(jsonPath("$.numberOfElements").value(2));
     }
 }
