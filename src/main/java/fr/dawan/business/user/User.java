@@ -18,4 +18,5 @@ public class User extends BaseEntity {
     private String username;
     private String password;
     private List<User> users;
+
 }
