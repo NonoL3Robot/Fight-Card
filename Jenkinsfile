@@ -35,9 +35,15 @@ pipeline {
 
         stage('Start Docker Container') {
             steps {
-                bat "docker stop myawesomeproject"
-                bat "docker rm myawesomeproject"
-                bat "docker run --name myawesomeproject -d -p 9075:8080 myawesomeproject:latest MyAwesomeProject.jar"
+                script {
+                    try {
+                        bat "docker stop myawesomeproject"
+                        bat "docker rm myawesomeproject"
+                    } catch (Exception e) {
+                        echo '404 Not Found : myawesomeproject'
+                    }
+                    bat "docker run --name myawesomeproject -d -p 9075:8080 myawesomeproject:latest MyAwesomeProject.jar"
+                }
             }
         }
     }
