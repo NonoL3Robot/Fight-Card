@@ -28,7 +28,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    dockerImage = docker.build('myawesomeproject:latest')
+                    dockerImage = docker.build('fightcard:latest')
                     bat "docker image prune -f"
                 }
             }
@@ -38,12 +38,12 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat "docker stop myawesomeproject"
-                        bat "docker rm myawesomeproject"
+                        bat "docker stop fightcard"
+                        bat "docker rm fightcard"
                     } catch (Exception e) {
-                        echo '404 Not Found : myawesomeproject'
+                        echo '404 Not Found : fightcard'
                     }
-                    bat "docker run --name myawesomeproject -d -p 9075:8080 myawesomeproject:latest MyAwesomeProject.jar"
+                    bat "docker run --name fightcard -d -p 9075:8080 fightcard:latest FightCard.jar"
                 }
             }
         }
