@@ -11,5 +11,4 @@ public class UserController extends GenericController<UserDto, UserService> {
         super(service);
     }
 
-
 }

@@ -1,4 +1,4 @@
-package fr.dawan.business.user;
+package fr.dawan.business.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
-    private long id;
-    private int version;
-    private String username;
+public class LoginDto {
     private String email;
+    private String password;
 }
