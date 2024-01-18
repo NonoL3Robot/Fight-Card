@@ -7,8 +7,8 @@ import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CarteMapper extends GenericMapper<Carte, CarteDto> {
-//    @Override
-//    @Mapping(source = "licence.name", target = "licenceName")
-//    @Mapping(source = "licence.id", target = "licenceId")
-//    CarteDto toDto(Carte entity);
+    @Override
+    @Mapping(source = "licence.name", target = "licenceName")
+    @Mapping(source = "licence.id", target = "licenceId")
+    CarteDto toDto(Carte entity);
 }

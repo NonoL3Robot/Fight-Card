@@ -11,8 +11,8 @@ public class CarteDto {
     private long id;
     private int version;
     private String name;
-//    private String description;
-//    private String licenceName;
-//    private Long licenceId;
+    private String description;
+    private String licenceName;
+    private Long licenceId;
     private CarteLicenceDto licence;
 }
