@@ -28,7 +28,6 @@ class LicenceServiceImplTest {
         service = new LicenceServiceImpl(repository, mapper);
     }
 
-    /*
     @Test
     void findAllTest() {
         // Arrange
@@ -37,7 +36,6 @@ class LicenceServiceImplTest {
         Licence licence1 = new Licence("Marvel", null);
         Licence licence2 = new Licence("Marvel", null);
         Page<Licence> entities = new PageImpl<>(List.of(licence1, licence2));
-
 
         LicenceDto licenceDto1 = new LicenceDto(0L, 0, licence1.getName(), null, 0);
         LicenceDto licenceDto2 = new LicenceDto(0L, 0, licence1.getName(), null, 0);
@@ -58,7 +56,5 @@ class LicenceServiceImplTest {
     void passingTest() {
         assertTrue(true);
     }
-
-*/
 
 }
