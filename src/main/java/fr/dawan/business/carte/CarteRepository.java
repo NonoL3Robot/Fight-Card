@@ -9,4 +9,7 @@ public interface CarteRepository extends JpaRepository<Carte, Long> {
 
     Page<Carte> findByLicence_NameLike(String name, Pageable pageable);
 
+    Page<Carte> findByLicence_Id(long id, Pageable pageable);
+
+
 }

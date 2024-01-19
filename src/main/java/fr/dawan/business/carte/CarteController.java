@@ -20,8 +20,13 @@ public class CarteController extends GenericController<CarteDto, CarteService> {
         return service.findByName(name, pageable);
     }
 
-    @GetMapping("byLicence/{name}")
+    @GetMapping("byLicenceName/{name}")
     public Page<CarteDto> findByLicenceNameLike(@PathVariable String name, Pageable pageable) {
         return service.findByLicence_NameLike(name, pageable);
+    }
+
+    @GetMapping("byLicenceId/{id}")
+    public Page<CarteDto> findByLicence_Id(@PathVariable long id, Pageable pageable){
+        return service.findByLicence_Id(id, pageable);
     }
 }

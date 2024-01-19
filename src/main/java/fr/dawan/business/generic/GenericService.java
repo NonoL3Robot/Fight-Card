@@ -1,6 +1,5 @@
 package fr.dawan.business.generic;
 
-import fr.dawan.business.licence.LicenceDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

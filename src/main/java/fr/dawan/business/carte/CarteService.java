@@ -8,4 +8,6 @@ public interface CarteService extends GenericService<CarteDto> {
     Page<CarteDto> findByName(String name, Pageable pageable);
 
     Page<CarteDto> findByLicence_NameLike(String s, Pageable pageable);
+
+    Page<CarteDto> findByLicence_Id(long id, Pageable pageable);
 }

@@ -18,7 +18,6 @@ import java.util.List;
 @AllArgsConstructor
 public class Licence extends BaseEntity {
     private String name;
-//    private String description;
 
     @OneToMany(mappedBy = "licence")
     private List<Carte> cartes;
