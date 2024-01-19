@@ -2,6 +2,7 @@ package fr.dawan.business.carte;
 
 import fr.dawan.business.generic.GenericController;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,10 +21,6 @@ public class CarteController extends GenericController<CarteDto, CarteService> {
         return service.findByName(name, pageable);
     }
 
-    @GetMapping("byLicenceName/{name}")
-    public Page<CarteDto> findByLicenceNameLike(@PathVariable String name, Pageable pageable) {
-        return service.findByLicence_NameLike(name, pageable);
-    }
 
     @GetMapping("byLicenceId/{id}")
     public Page<CarteDto> findByLicence_Id(@PathVariable long id, Pageable pageable){
