@@ -1,7 +1,7 @@
 package fr.dawan.business.carte;
 
-import fr.dawan.business.generic.BaseEntity;
 import fr.dawan.business.licence.Licence;
+import fr.dawan.generic.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -16,12 +16,12 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Carte extends BaseEntity {
     private String name;
-
+    
     @ManyToOne
     private Licence licence;
-
+    
     private String description;
-
+    
     private int statCourage;
     private int statIntelligence;
     private int statForce;

@@ -1,8 +1,7 @@
 package fr.dawan.business.licence;
 
-import fr.dawan.business.generic.GenericService;
+import fr.dawan.generic.GenericService;
 
 
 public interface LicenceService extends GenericService<LicenceDto> {
-
 }

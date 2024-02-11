@@ -12,5 +12,4 @@ public class LicenceDto {
     private int version;
     private String name;
     private long carteCount;
-
 }

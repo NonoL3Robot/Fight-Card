@@ -1,7 +1,7 @@
 package fr.dawan.business.licence;
 
 import fr.dawan.business.carte.Carte;
-import fr.dawan.business.generic.BaseEntity;
+import fr.dawan.generic.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Licence extends BaseEntity {
     private String name;
-
+    
     @OneToMany(mappedBy = "licence")
     private List<Carte> cartes;
 }

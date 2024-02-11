@@ -1,11 +1,8 @@
 package fr.dawan.business.carte;
 
-import fr.dawan.business.generic.GenericMapper;
+import fr.dawan.generic.GenericMapper;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface CarteMapper extends GenericMapper<Carte, CarteDto> {
-    @Override
-    CarteDto toDto(Carte entity);
+@Mapper
+public interface CarteMapper extends GenericMapper<CarteDto, Carte> {
 }
