@@ -12,5 +12,8 @@ public class CarteDto {
     private int version;
     private String name;
     private String description;
+    private int statCourage;
+    private int statIntelligence;
+    private int statForce;
     private long licenceId;
 }

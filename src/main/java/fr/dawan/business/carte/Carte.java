@@ -16,13 +16,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Carte extends BaseEntity {
     private String name;
-    
-    @ManyToOne
-    private Licence licence;
-    
     private String description;
-    
     private int statCourage;
     private int statIntelligence;
     private int statForce;
+    
+    @ManyToOne
+    private Licence licence;
 }
