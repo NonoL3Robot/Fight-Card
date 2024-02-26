@@ -29,7 +29,7 @@ class CarteRepositoryTest {
     
     @BeforeEach
     public void beforeEach() {
-        c = new Carte("Test", "description", 0, 0, 0, new Licence());
+        c = new Carte("Test", "description", 0, 0, 0, null);
     }
     
     @Test
@@ -50,7 +50,7 @@ class CarteRepositoryTest {
     @Test
     void findAll_Test() {
         carteRepository.save(c);
-        carteRepository.save(new Carte("", "", 0, 0, 0, new Licence("", new ArrayList<>())));
+        carteRepository.save(new Carte("", "", 0, 0, 0, null));
         List<Carte> cartes = carteRepository.findAll();
         assertEquals(carteRepository.findAll().size(), cartes.size());
     }
