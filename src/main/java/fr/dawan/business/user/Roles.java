@@ -1,5 +1,5 @@
 package fr.dawan.business.user;
 
-public enum Role {
+public enum Roles {
     PUBLIC, ADMIN
 }

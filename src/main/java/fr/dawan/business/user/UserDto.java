@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -14,4 +15,5 @@ public class UserDto {
     private long id;
     private int version;
     private String email;
+    Set<Roles> roles;
 }

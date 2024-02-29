@@ -1,10 +1,9 @@
 package fr.dawan.business.user;
 
 import fr.dawan.generic.GenericMapper;
-import fr.dawan.security.auth.RegisterDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserMapper extends GenericMapper<UserDto, User> {
-    User toEntity(RegisterDto dto);
 }

@@ -1,7 +1,7 @@
-package fr.dawan.security.conf;
+package fr.dawan.auth.conf;
 
-import fr.dawan.security.interceptors.JwtFilter;
-import lombok.RequiredArgsConstructor;
+import fr.dawan.auth.filters.JwtFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,20 +17,27 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-@RequiredArgsConstructor
 public class SecurityConfig {
+    
+    private static final String FRONT_URL = "http://localhost:5173/";
     
     public static final String[] AUTHORIZED_URL = new String[]{
             "/auth/**",
-            "/public/**"
+            "/public/**",
+            "/api/v1/**"
     };
     
-    private final UserDetailsService userDetailsService;
-    private final JwtFilter jwtFilter;
+    @Autowired
+    private JwtFilter jwtAuthFilter;
+    
+    @Autowired
+    private UserDetailsService userDetailsService;
     
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -44,17 +51,28 @@ public class SecurityConfig {
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .cors(AbstractHttpConfigurer::disable)
+        return http.cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(HttpMethod.DELETE,"/users/**").hasRole("ADMIN")
                         .requestMatchers(AUTHORIZED_URL).permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().authenticated()
+                )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .userDetailsService(userDetailsService)
                 .build();
+    }
+    
+    @Bean
+    public WebMvcConfigurer myMvcConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins(FRONT_URL)
+                        .allowedMethods("*", "GET", "POST", "PUT", "DELETE", "OPTIONS").allowedHeaders("*")
+                        .allowCredentials(true).maxAge(3600);
+            }
+        };
     }
 }

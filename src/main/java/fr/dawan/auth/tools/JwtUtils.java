@@ -1,11 +1,10 @@
-package fr.dawan.security.tools;
+package fr.dawan.auth.tools;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.util.Date;
@@ -13,11 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-@Component
 public class JwtUtils {
     private static final String SECRET_KEY = "secret23432Rdsfmldkm_!R%)45";
     private static final long TOKEN_DURATION = Duration.ofHours(1).toMillis(); // 1H
-    private static final long REFRESH_TOKEN_DURATION = Duration.ofDays(7).toMillis(); // 7D
+    private static final long REFRESH_TOKEN_DURATION = Duration.ofDays(7).toMillis(); // 1H
     
     public static String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);

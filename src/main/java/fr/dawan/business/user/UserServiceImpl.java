@@ -1,21 +1,21 @@
 package fr.dawan.business.user;
 
 import fr.dawan.generic.AbstractGenericService;
-import fr.dawan.security.auth.UserSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import fr.dawan.auth.UserSecurity;
+import jakarta.transaction.Transactional;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl extends AbstractGenericService<User, UserDto, UserRepository, UserMapper> implements UserService, UserDetailsService {
-    public UserServiceImpl(UserRepository repository, UserMapper mapper) {
-        super(repository, mapper);
+@Transactional
+public class UserServiceImpl extends AbstractGenericService<User, UserDto, UserRepository, UserMapper> implements UserService {
+    public UserServiceImpl(UserRepository repository, UserMapper mapper, ApplicationEventPublisher publisher) {
+        super(repository, mapper, publisher);
     }
     
     @Override
     public UserSecurity loadUserByUsername(String email) throws UsernameNotFoundException {
-        return repository.findByEmail(email)
-                .map(UserSecurity::new)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return repository.findByEmail(email).map(UserSecurity::new).orElseThrow();
     }
 }

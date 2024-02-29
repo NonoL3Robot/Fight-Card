@@ -1,4 +1,4 @@
-package fr.dawan.security.auth;
+package fr.dawan.auth.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

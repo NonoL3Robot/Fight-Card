@@ -1,4 +1,4 @@
-package fr.dawan.security.auth;
+package fr.dawan.auth;
 
 import fr.dawan.business.user.User;
 import lombok.Getter;
@@ -12,17 +12,23 @@ import java.util.Collection;
 @RequiredArgsConstructor
 @Getter
 public class UserSecurity implements UserDetails {
+    
+    private final Collection<? extends GrantedAuthority> authorities;
+    
+    @Getter
     private final User user;
-    private final Collection<? extends GrantedAuthority> roles;
     
     public UserSecurity(User user) {
         this.user = user;
-        this.roles = user.getRoles().stream().map(Enum::name).map(SimpleGrantedAuthority::new).toList();
+        authorities = user.getRoles().stream()
+                .map(Enum::name)
+                .map(SimpleGrantedAuthority::new)
+                .toList();
     }
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return authorities;
     }
     
     @Override
@@ -52,6 +58,6 @@ public class UserSecurity implements UserDetails {
     
     @Override
     public boolean isEnabled() {
-        return user.isActive();
+        return true;
     }
 }

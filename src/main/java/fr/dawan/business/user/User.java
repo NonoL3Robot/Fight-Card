@@ -11,6 +11,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.util.List;
+import java.util.Set;
 
 @Accessors(chain = true)
 @Entity
@@ -27,8 +28,7 @@ public class User extends BaseEntity {
     private String email;
     
     private String password;
-    private boolean isActive;
     
     @ElementCollection
-    private List<Role> roles;
+    private Set<Roles> roles = Set.of(Roles.PUBLIC);
 }
