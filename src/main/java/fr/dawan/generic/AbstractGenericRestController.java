@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -26,11 +27,13 @@ public abstract class AbstractGenericRestController<
     }
     
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     protected ResponseEntity<D> saveOrUpdate(@RequestBody D dto) {
         return ResponseEntity.ok(service.saveOrUpdate(dto));
     }
     
     @DeleteMapping("{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     protected void deleteById(@PathVariable long id) {
         service.deleteById(id);
     }
