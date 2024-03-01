@@ -20,6 +20,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.Map;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -28,7 +30,19 @@ public class SecurityConfig {
     public static final String[] AUTHORIZED_URL = new String[]{
             "/auth/**"
     };
-    
+    public static final Map<HttpMethod, String[]> AUTHORIZED_BY_METHOD = Map.of(
+            HttpMethod.GET, new String[]{
+                    "/api/v1/licences",
+                    "/api/v1/cartes",
+            },
+            HttpMethod.POST, new String[]{
+            
+            },
+            HttpMethod.DELETE, new String[]{
+            
+            }
+    );
+    private static final String FRONT_URL = "http://localhost:5173/";
     @Autowired
     private JwtFilter jwtAuthFilter;
     
@@ -52,6 +66,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(AUTHORIZED_URL).permitAll()
+                        .requestMatchers(HttpMethod.GET, AUTHORIZED_BY_METHOD.get(HttpMethod.GET)).permitAll()
+                        .requestMatchers(HttpMethod.POST, AUTHORIZED_BY_METHOD.get(HttpMethod.POST)).permitAll()
+                        .requestMatchers(HttpMethod.DELETE, AUTHORIZED_BY_METHOD.get(HttpMethod.DELETE)).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

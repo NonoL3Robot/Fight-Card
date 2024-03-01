@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +21,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor
@@ -31,7 +33,7 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException {
         
-        if (!request.getMethod().equals("OPTIONS")  && isInterceptedUrl(request.getRequestURI())) {
+        if (!request.getMethod().equals("OPTIONS") && isInterceptedRequest(request)) {
             String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
             try {
                 if (authHeader == null || (!authHeader.startsWith("Bearer") && !authHeader.startsWith("bearer")))
@@ -57,7 +59,11 @@ public class JwtFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
     
-    private boolean isInterceptedUrl(String URI) {
-        return Arrays.stream(SecurityConfig.AUTHORIZED_URL).map(s -> s.replace("**", ".*")).noneMatch(URI::matches);
+    private boolean isInterceptedRequest(HttpServletRequest request) {
+        String URI = request.getRequestURI();
+        return Stream.concat(
+                        Arrays.stream(SecurityConfig.AUTHORIZED_BY_METHOD.getOrDefault(HttpMethod.valueOf(request.getMethod()), new String[]{})),
+                        Arrays.stream(SecurityConfig.AUTHORIZED_URL))
+                .map(s -> s.replace("**", ".*")).noneMatch(URI::matches);
     }
 }

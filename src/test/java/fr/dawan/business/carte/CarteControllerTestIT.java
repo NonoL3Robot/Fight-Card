@@ -2,6 +2,7 @@ package fr.dawan.business.carte;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 class CarteControllerTestIT {
     
@@ -53,6 +55,7 @@ class CarteControllerTestIT {
     // 1 methode de test pour chaque methode dans CarteController
     
     @Test
+    @WithMockUser(username = "nono@robot.com", password = "nono31", roles = {"ADMIN"})
     void deleteById_test() throws Exception {
         long id = 1;
         
