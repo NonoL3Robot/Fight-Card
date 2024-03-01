@@ -12,8 +12,10 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class) // Permet l'utilisation de mocks
 class LicenceServiceImplTest {
@@ -26,18 +28,18 @@ class LicenceServiceImplTest {
     
     private ApplicationEventPublisher publisher;
     
-    @BeforeEach // s'exécute AVANT chaque test
+    @BeforeEach
+        // s'exécute AVANT chaque test
     void setup() {
         service = new LicenceServiceImpl(repository, mapper, publisher);
     }
     
     @Test
     void findAllTest() {
-        // Arrange
         Pageable pageable = Pageable.unpaged();
         
-        Licence licence1 = new Licence("Marvel", null);
-        Licence licence2 = new Licence("Marvel", null);
+        Licence licence1 = new Licence("Test1", null);
+        Licence licence2 = new Licence("Test2", null);
         Page<Licence> entities = new PageImpl<>(List.of(licence1, licence2));
         
         LicenceDto licenceDto1 = new LicenceDto(0L, 0, licence1.getName(), null);
@@ -48,11 +50,23 @@ class LicenceServiceImplTest {
         Mockito.when(mapper.toDto(licence1)).thenReturn(licenceDto1);
         Mockito.when(mapper.toDto(licence2)).thenReturn(licenceDto2);
         
-        // Act
         Page<LicenceDto> result = service.findAll(pageable);
         
-        // Assert
         assertTrue(result.getContent().containsAll(expected));
+    }
+    
+    @Test
+    void findByIdTest() {
+        Licence licence1 = new Licence("Test", null);
+        Optional<Licence> entity = Optional.of(licence1);
+        LicenceDto licenceDto1 = new LicenceDto(0L, 0, licence1.getName(), null);
+        
+        Mockito.when(repository.findById(licence1.getId())).thenReturn(entity);
+        Mockito.when(mapper.toDto(licence1)).thenReturn(licenceDto1);
+        
+        Optional<LicenceDto> result = service.findById(licence1.getId());
+        
+        result.ifPresent(res -> assertEquals(res.getId(), licence1.getId()));
     }
     
 }

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -16,6 +18,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -56,7 +59,10 @@ class CarteControllerTestIT {
         when(service.findById(id)).thenReturn(Optional.ofNullable(cartes.get(0)));
         doNothing().when(service).deleteById(id);
         
-        mockMvc.perform(delete("http://localhost:8080/api/v1/cartes/{id}", id))
+        mockMvc.perform(
+                        delete("http://localhost:8080/api/v1/cartes/{id}", id)
+                                .with(csrf())
+                )
                 .andExpect(status().isOk()); // Adapté à votre structure de réponse
     }
 //    @Test

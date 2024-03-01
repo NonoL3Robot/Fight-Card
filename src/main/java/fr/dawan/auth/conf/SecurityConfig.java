@@ -25,12 +25,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableMethodSecurity
 public class SecurityConfig {
     
-    private static final String FRONT_URL = "http://localhost:5173/";
-    
     public static final String[] AUTHORIZED_URL = new String[]{
-            "/auth/**",
-            "/public/**",
-            "/api/v1/**"
+            "/auth/**"
     };
     
     @Autowired
