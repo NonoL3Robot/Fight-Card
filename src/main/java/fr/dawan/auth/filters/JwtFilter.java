@@ -31,7 +31,7 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException {
         
-        if (!request.getMethod().equals("OPTIONS") && (!Arrays.asList(SecurityConfig.AUTHORIZED_URL).contains(request.getRequestURI()))) {
+        if (!request.getMethod().equals("OPTIONS")  && isInterceptedUrl(request.getRequestURI())) {
             String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
             try {
                 if (authHeader == null || (!authHeader.startsWith("Bearer") && !authHeader.startsWith("bearer")))
@@ -55,5 +55,9 @@ public class JwtFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
+    }
+    
+    private boolean isInterceptedUrl(String URI) {
+        return Arrays.stream(SecurityConfig.AUTHORIZED_URL).map(s -> s.replace("**", ".*")).noneMatch(URI::matches);
     }
 }
